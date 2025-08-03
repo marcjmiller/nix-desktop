@@ -1,3 +1,3 @@
 {
-
+  flakeDir = "$HOME/nixcfg";
 }

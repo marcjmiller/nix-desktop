@@ -84,6 +84,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marcm = {
     isNormalUser = true;
+    shell = pkgs.zsh;
     description = "Marc Miller";
     extraGroups = [
       "networkmanager"
@@ -93,6 +94,7 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+  programs.zsh.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

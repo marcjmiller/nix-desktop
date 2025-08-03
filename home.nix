@@ -4,6 +4,10 @@
 }:
 
 {
+  imports = [
+    ./nixos-desktop/shell
+  ];
+
   home = {
     username = "marcm";
     homeDirectory = "/home/marcm";
@@ -18,6 +22,7 @@
       gnupg
       nil
       nixd
+      oh-my-zsh
       p7zip
       pciutils
       tealdeer
