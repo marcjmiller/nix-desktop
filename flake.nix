@@ -7,12 +7,17 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
       nixpkgs,
       home-manager,
+      stylix,
       ...
     }@inputs:
     {
@@ -21,6 +26,7 @@
           specialArgs = { inherit inputs; };
           system = "x86_64-linux";
           modules = [
+            stylix.nixosModules.stylix
             ./nixos-desktop/configuration.nix
             home-manager.nixosModules.home-manager
             {

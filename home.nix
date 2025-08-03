@@ -5,9 +5,10 @@
 
 {
   imports = [
-    ./nixos-desktop/shell
-    ./nixos-desktop/wm
     ./nixos-desktop/editor
+    ./nixos-desktop/shell
+    ./nixos-desktop/waybar
+    ./nixos-desktop/wm
   ];
 
   home = {
@@ -25,6 +26,7 @@
       gnupg
       kitty
       nerd-fonts.hasklug
+      nerd-fonts.jetbrains-mono
       nerd-fonts.victor-mono
       nil
       nixd
@@ -49,6 +51,10 @@
   };
 
   programs = {
+    fuzzel = {
+      enable = true;
+    };
+    
     git = {
       enable = true;
       userName = "Marc Miller";
@@ -75,5 +81,4 @@
       flake = "/home/marcm/nixcfg";
     };
   };
-
 }

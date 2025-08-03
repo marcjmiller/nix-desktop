@@ -6,5 +6,6 @@
   mod = "SUPER";
 
   # Some preferred apps
+  launcher = "fuzzel";
   terminal = "kitty";
 }

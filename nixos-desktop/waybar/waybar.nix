@@ -1,10 +1,12 @@
-{ ... }:
+{
+  lib,
+  ...
+}:
 
 {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
-
     settings = {
       mainBar = {
         layer = "top";
@@ -75,5 +77,6 @@
         };
       };
     };
+    style = lib.mkAfter (builtins.readFile ./waybar.css);
   };
 }

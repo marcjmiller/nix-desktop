@@ -1,6 +1,7 @@
 { ... }:
 let
   inherit (import ../variables.nix)
+    launcher
     mod
     terminal
     ;
@@ -37,6 +38,7 @@ in
 
       # App shortcuts
       "${mod}, Return, exec, ${terminal}"
+      "${mod}, SPACE, exec, ${launcher}"
     ];
 
     bindm = [
