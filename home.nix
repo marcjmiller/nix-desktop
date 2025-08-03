@@ -7,6 +7,7 @@
   imports = [
     ./nixos-desktop/shell
     ./nixos-desktop/wm
+    ./nixos-desktop/editor
   ];
 
   home = {
@@ -23,6 +24,8 @@
       gawk
       gnupg
       kitty
+      nerd-fonts.hasklug
+      nerd-fonts.victor-mono
       nil
       nixd
       oh-my-zsh
@@ -70,27 +73,6 @@
       clean.enable = true;
       clean.extraArgs = "--keep-since 15d --keep 3";
       flake = "/home/marcm/nixcfg";
-    };
-
-    zed-editor = {
-      enable = true;
-      userSettings = {
-        indent_guides = {
-          enabled = true;
-          coloring = "indent_aware";
-          background_coloring = "indent_aware";
-        };
-        tab_size = 2;
-        theme = {
-          mode = "dark";
-        };
-      };
-
-      extensions = [
-        "nix"
-        "docker"
-        "docker compose"
-      ];
     };
   };
 
