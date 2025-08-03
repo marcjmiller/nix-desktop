@@ -15,5 +15,5 @@
       pac-man = "pac-man.png";
       blackhole_1 = "blackhole_1.png";
     }
-    .blackhole_1;
+    .pac-man;
 }

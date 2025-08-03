@@ -2,7 +2,11 @@
   pkgs,
   ...
 }:
-
+let
+  inherit (import ./nixos-desktop/variables.nix)
+    wallpaperImg
+    ;
+in
 {
   imports = [
     ./nixos-desktop/editor
@@ -43,13 +47,21 @@
       zsh-powerlevel10k
     ];
 
+    file = {
+      "Pictures/Wallpapers" = {
+        source = ./nixos-desktop/files/wallpapers;
+        recursive = true;
+      };
+    };
+
     stateVersion = "25.05";
   };
 
-  home.file = {
-    "Pictures/Wallpapers" = {
-      source = ./nixos-desktop/files/wallpapers;
-      recursive = true;
+  stylix = {
+    image = ./files/wallpapers/${wallpaperImg};
+    targets = {
+      fuzzel.enable = true;
+      kitty.enable = true;
     };
   };
 

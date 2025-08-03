@@ -37,7 +37,7 @@
               home-manager.users.marcm.imports = [
                 stylix.homeModules.stylix
                 ./home.nix
-              ]; 
+              ];
             }
           ];
         };
