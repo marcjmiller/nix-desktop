@@ -30,9 +30,14 @@
             ./nixos-desktop/configuration.nix
             home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.marcm = import ./home.nix;
+              home-manager.users.marcm.nixpkgs = {
+                config.allowUnfree = true;
+              };
+              home-manager.users.marcm.imports = [
+                stylix.homeModules.stylix
+                ./home.nix
+              ]; 
             }
           ];
         };
