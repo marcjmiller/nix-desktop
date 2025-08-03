@@ -3,6 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
+  inputs,
   pkgs,
   ...
 }:
@@ -11,7 +12,6 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./wm
   ];
 
   # Bootloader.
@@ -95,6 +95,11 @@
   # Install firefox.
   programs.firefox.enable = true;
   programs.zsh.enable = true;
+
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

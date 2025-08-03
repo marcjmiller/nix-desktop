@@ -2,7 +2,6 @@
   description = "A flake for my desktop config";
 
   inputs = {
-    hyprland.url = "github:hyprwm/Hyprland";
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";

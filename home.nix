@@ -6,6 +6,7 @@
 {
   imports = [
     ./nixos-desktop/shell
+    ./nixos-desktop/wm
   ];
 
   home = {
