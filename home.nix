@@ -46,6 +46,13 @@
     stateVersion = "25.05";
   };
 
+  home.file = {
+    "Pictures/Wallpapers" = {
+      source = ./nixos-desktop/files/wallpapers;
+      recursive = true;
+    };
+  };
+
   xresources.properties = {
     "Xcursor.size" = 16;
     "Xft.dpi" = 172;
