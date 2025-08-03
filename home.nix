@@ -7,6 +7,7 @@
   imports = [
     ./nixos-desktop/editor
     ./nixos-desktop/shell
+    ./nixos-desktop/tools
     ./nixos-desktop/waybar
     ./nixos-desktop/wm
   ];
@@ -48,37 +49,5 @@
   xresources.properties = {
     "Xcursor.size" = 16;
     "Xft.dpi" = 172;
-  };
-
-  programs = {
-    fuzzel = {
-      enable = true;
-    };
-    
-    git = {
-      enable = true;
-      userName = "Marc Miller";
-      userEmail = "marcjmiller@outlook.com";
-      extraConfig = {
-        core.askPass = "";
-        core.editor = "vim";
-        init.defaultBranch = "main";
-        push.autoSetupRemote = true;
-        pull.rebase = true;
-        rebase.autosquash = true;
-        rebase.autostash = true;
-        commit.verbose = true;
-        rerere.enabled = true;
-        help.autocorrect = 10;
-        diff.histogram = "histogram";
-      };
-    };
-
-    nh = {
-      enable = true;
-      clean.enable = true;
-      clean.extraArgs = "--keep-since 15d --keep 3";
-      flake = "/home/marcm/nixcfg";
-    };
   };
 }
