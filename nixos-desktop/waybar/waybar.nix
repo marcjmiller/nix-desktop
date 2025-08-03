@@ -1,9 +1,12 @@
 {
-  config,
-  lib,
+  stylixColors,
   ...
 }:
-
+let
+  inherit (stylixColors)
+    base08
+    ;
+in
 {
   programs.waybar = {
     enable = true;
@@ -69,7 +72,7 @@
             mode = "month";
             on-scroll = 1;
             format = {
-              today = "<span color='#47FF51'><b><u>{}</u></b></span>";
+              today = "<span color='#${base08}'><b><u>{}</u></b></span>";
             };
           };
           actions = {
