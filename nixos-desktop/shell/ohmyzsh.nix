@@ -10,12 +10,13 @@
       "docker-compose"
       "eza"
       "fzf"
+      "git"
       "gitfast"
+      "httpie"
       "kitty"
       "sudo"
       "tldr"
       "z"
     ];
-
   };
 }

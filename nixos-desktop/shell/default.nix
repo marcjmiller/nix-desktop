@@ -1,7 +1,7 @@
 {
   imports = [
+    ./zsh.nix
     ./aliases.nix
     ./ohmyzsh.nix
-    ./zsh.nix
   ];
 }

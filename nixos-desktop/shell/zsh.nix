@@ -7,9 +7,7 @@
   programs.zsh = {
     enable = true;
     autocd = true;
-    autosuggestion = {
-      enable = true;
-    };
+    autosuggestion.enable = true;
     enableCompletion = true;
     history = {
       append = true;
@@ -35,6 +33,4 @@
     };
     syntaxHighlighting.enable = true;
   };
-
-  home.shell.enableZshIntegration = true;
 }
