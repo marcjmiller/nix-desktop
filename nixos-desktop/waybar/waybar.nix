@@ -1,0 +1,79 @@
+{ ... }:
+
+{
+  programs.waybar = {
+    enable = true;
+    systemd.enable = true;
+
+    settings = {
+      mainBar = {
+        layer = "top";
+        position = "top";
+
+        modules-left = [
+          "idle_inhibitor"
+        ];
+        modules-center = [
+          "hyprland/workspace"
+        ];
+        modules-right = [
+          "tray"
+          "clock"
+        ];
+
+        "idle_inhibitor" = {
+          format = "{icon}";
+          format-icons = {
+            activated = "";
+            deactivated = "";
+          };
+          tooltip = "true";
+        };
+
+        "hyprland/workspaces" = {
+          show-special = true;
+          format = "{name}";
+          format-icons = {
+            default = " ";
+            active = " ";
+            urgent = " ";
+          };
+          on-scroll-up = "hyprctl dispatch workspace e+1";
+          on-scroll-down = "hyprctl dispatch workspace e-1";
+          persistent-workspaces = {
+            "1" = [ ];
+            "2" = [ ];
+            "3" = [ ];
+            "4" = [ ];
+            "5" = [ ];
+            "code" = [ ];
+            "chat" = [ ];
+          };
+        };
+
+        "tray" = {
+          spacing = 12;
+        };
+
+        "clock" = {
+          format = " {:L%I:%M %p %Z}";
+          timezones = [
+            "America/New_York"
+            "Etc/UTC"
+          ];
+          tooltip-format = "<tt>{calendar}</tt>";
+          calendar = {
+            mode = "month";
+            on-scroll = 1;
+            format = {
+              today = "<span color='#47FF51'><b><u>{}</u></b></span>";
+            };
+          };
+          actions = {
+            on-click-right = "tz_up";
+          };
+        };
+      };
+    };
+  };
+}
