@@ -17,7 +17,7 @@
           "idle_inhibitor"
         ];
         modules-center = [
-          "hyprland/workspace"
+          "hyprland/workspaces"
         ];
         modules-right = [
           "tray"
