@@ -14,6 +14,8 @@
       "kitty"
       "sudo"
       "tldr"
+      "z"
     ];
+
   };
 }

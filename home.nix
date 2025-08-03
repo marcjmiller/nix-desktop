@@ -15,11 +15,13 @@
     packages = with pkgs; [
       bat
       btop
+      direnv
       dnsutils
       eza
-      kitty
+      fzf
       gawk
       gnupg
+      kitty
       nil
       nixd
       oh-my-zsh
@@ -31,6 +33,7 @@
       usbutils
       xz
       zip
+      zsh-powerlevel10k
     ];
 
     stateVersion = "25.05";
