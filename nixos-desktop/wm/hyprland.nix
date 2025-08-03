@@ -10,10 +10,31 @@
     portalPackage = null;
     xwayland.enable = true;
     settings = {
+      decoration = {
+        blur = {
+          enabled = true;
+          new_optimizations = true;
+          popups = true;
+          xray = true;
+        };
+      };
+      general = {
+        resize_on_border = true;
+      };
       input = {
         repeat_delay = 200;
         repeat_rate = 75;
       };
+      layerrule = [
+        "blur, waybar"
+        "blur, launcher"
+        "ignorealpha 0.5, launcher"
+      ];
+      windowrulev2 = [
+        # Comm apps to comm workspace
+        "workspace name:comm, class:^(discord)$"
+        "workspace name:comm, class:^(Discord)$"
+      ];
     };
     systemd = {
       enable = true;

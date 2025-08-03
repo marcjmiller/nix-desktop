@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   ...
 }:
@@ -48,8 +49,8 @@
             "3" = [ ];
             "4" = [ ];
             "5" = [ ];
+            "comm" = [ ];
             "code" = [ ];
-            "chat" = [ ];
           };
         };
 
@@ -77,6 +78,6 @@
         };
       };
     };
-    style = lib.mkAfter (builtins.readFile ./waybar.css);
+    # style = lib.mkAfter (builtins.readFile ./waybar.css);
   };
 }

@@ -15,7 +15,7 @@ in
       "${mod}, 3, workspace, 3"
       "${mod}, 4, workspace, 4"
       "${mod}, 5, workspace, 5"
-      "${mod}, C, workspace, chat"
+      "${mod}, C, workspace, comm"
       "${mod}, D, workspace, dev"
       "${mod}, mouse_down, workspace, e-1"
       "${mod}, mouse_up, workspace, e+1"
@@ -23,7 +23,7 @@ in
       "${mod} SHIFT, TAB, workspace, next"
 
       # Window workspace movements
-      "${mod} SHIFT, C, movetoworkspacesilent, name:chat"
+      "${mod} SHIFT, C, movetoworkspacesilent, name:comm"
       "${mod} SHIFT, D, movetoworkspacesilent, name:dev"
       "${mod} SHIFT, 1, movetoworkspacesilent, 1"
       "${mod} SHIFT, 2, movetoworkspacesilent, 2"

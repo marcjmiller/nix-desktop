@@ -8,4 +8,13 @@
   # Some preferred apps
   launcher = "fuzzel";
   terminal = "kitty";
+
+  # Wallpaper selection
+  wallpaperImg =
+    {
+      pac-man = "pac-man.png";
+      blackhole_1 = "blackhole_1.png";
+    }
+    .blackhole_1;
+
 }
