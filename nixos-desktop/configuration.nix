@@ -110,7 +110,6 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    kitty
     vim
   ];
 
@@ -142,6 +141,14 @@ in
   system.stateVersion = "25.05"; # Did you read the comment?
 
   home-manager.extraSpecialArgs.stylixColors = config.lib.stylix.colors;
+  
+  security = {
+    sudo-rs = {
+      enable = true;
+      execWheelOnly = true;
+    };
+    sudo.enable = false;
+  };
 
   nix.settings = {
     experimental-features = [
