@@ -39,6 +39,7 @@ in
       nixd
       oh-my-zsh
       p7zip
+      protonup-rs
       pciutils
       tealdeer
       tree

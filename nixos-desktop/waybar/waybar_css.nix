@@ -54,6 +54,15 @@ let
       opacity: 1.0;
       font-weight: bold;
     }
+    
+    #tray {
+      font-size: 24px;
+      margin: 8px 7px;
+      padding: 0 18px;
+      color: #${base00};
+      background: #${base08};
+      border-radius: 16px;
+    }
   '';
 in
 {
