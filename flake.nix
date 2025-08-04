@@ -11,12 +11,16 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
-      nixpkgs,
       home-manager,
+      nixpkgs,
       stylix,
       ...
     }@inputs:
@@ -30,14 +34,15 @@
             ./nixos-desktop/configuration.nix
             home-manager.nixosModules.home-manager
             {
+              home-manager.extraSpecialArgs = {inherit inputs;};
               home-manager.useUserPackages = true;
-              home-manager.users.marcm.nixpkgs = {
-                config.allowUnfree = true;
+              home-manager.users.marcm = {
+                nixpkgs.config.allowUnfree = true;
+                imports = [
+                  stylix.homeModules.stylix
+                  ./home.nix
+                ];
               };
-              home-manager.users.marcm.imports = [
-                stylix.homeModules.stylix
-                ./home.nix
-              ];
             }
           ];
         };

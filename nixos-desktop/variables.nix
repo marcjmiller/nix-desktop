@@ -14,6 +14,7 @@
     {
       pac-man = "pac-man.png";
       blackhole_1 = "blackhole_1.png";
+      nordlaunch = "nordlaunch.png";
     }
-    .pac-man;
+    .nordlaunch;
 }

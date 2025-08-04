@@ -9,6 +9,7 @@ let
 in
 {
   imports = [
+    ./nixos-desktop/browser
     ./nixos-desktop/editor
     ./nixos-desktop/shell
     ./nixos-desktop/tools
@@ -26,6 +27,7 @@ in
       direnv
       dnsutils
       eza
+      # firefox
       fzf
       gawk
       gnupg
@@ -62,6 +64,7 @@ in
     targets = {
       fuzzel.enable = true;
       kitty.enable = true;
+      firefox.enable = true;
     };
   };
 
