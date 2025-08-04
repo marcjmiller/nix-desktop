@@ -59,6 +59,10 @@ in
 
     stateVersion = "25.05";
   };
+  
+  programs.lutris = {
+    enable = true;
+  };
 
   stylix = {
     image = ./files/wallpapers/${wallpaperImg};
