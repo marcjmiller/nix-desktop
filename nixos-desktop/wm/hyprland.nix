@@ -28,12 +28,17 @@
       layerrule = [
         "blur, waybar"
         "blur, launcher"
+        "blur, group"
         "ignorealpha 0.5, launcher"
       ];
       windowrulev2 = [
         # Comm apps to comm workspace
-        "workspace name:comm, class:^(discord)$"
-        "workspace name:comm, class:^(Discord)$"
+        "workspace name:comm, class:(?i)^discord$"
+        "workspace name:comm, class:(?i)^dev\.zed\.zed$"
+      ];
+      exec-once = [
+        "blueman-applet"
+        "nm-applet --indicator"
       ];
     };
     systemd = {

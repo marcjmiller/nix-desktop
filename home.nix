@@ -23,6 +23,8 @@ in
 
     packages = with pkgs; [
       bat
+      bluez
+      bluez-tools
       btop
       direnv
       dnsutils
@@ -45,6 +47,8 @@ in
       tree
       unzip
       usbutils
+      via
+      vial
       xz
       zip
       zsh-powerlevel10k
@@ -59,9 +63,22 @@ in
 
     stateVersion = "25.05";
   };
-  
+
   programs.lutris = {
     enable = true;
+  };
+
+  programs.neovim = {
+    enable = true;
+  };
+
+  services = {
+    blueman-applet = {
+      enable = true;
+    };
+    network-manager-applet = {
+      enable = true;
+    };
   };
 
   stylix = {

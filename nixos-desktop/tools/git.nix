@@ -7,7 +7,7 @@
     userEmail = "marcjmiller@outlook.com";
     extraConfig = {
       core.askPass = "";
-      core.editor = "vim";
+      core.editor = "nvim";
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
       pull.rebase = true;

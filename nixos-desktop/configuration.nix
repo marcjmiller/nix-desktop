@@ -109,9 +109,9 @@ in
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   vim
+  # ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
