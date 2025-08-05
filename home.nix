@@ -29,7 +29,6 @@ in
       direnv
       dnsutils
       eza
-      # firefox
       fzf
       gawk
       gnupg
