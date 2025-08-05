@@ -33,6 +33,7 @@ in
       gawk
       gnupg
       kitty
+      libarchive
       nerd-fonts.hasklug
       nerd-fonts.jetbrains-mono
       nerd-fonts.victor-mono
@@ -50,6 +51,7 @@ in
       vial
       xz
       zip
+      zoom-us
       zsh-powerlevel10k
     ];
 
@@ -71,6 +73,10 @@ in
     enable = true;
   };
 
+  programs.yazi = {
+    enable = true;
+  };
+
   services = {
     blueman-applet = {
       enable = true;
@@ -81,11 +87,19 @@ in
   };
 
   stylix = {
-    image = ./files/wallpapers/${wallpaperImg};
+    enable = true;
+    image = ./nixos-desktop/files/wallpapers/${wallpaperImg};
+    polarity = "dark";
     targets = {
       fuzzel.enable = true;
       kitty.enable = true;
       firefox.enable = true;
+    };
+
+    opacity = {
+      desktop = 0.90;
+      popups = 0.90;
+      terminal = 0.90;
     };
   };
 

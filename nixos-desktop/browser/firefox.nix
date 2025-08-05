@@ -16,6 +16,7 @@ in
       extensions.packages = with firefox-addons; [
         bitwarden
         darkreader
+        ublock-origin
         # better_youtube
         # betterttv
         # tampermonkey

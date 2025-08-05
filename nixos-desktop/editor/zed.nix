@@ -1,4 +1,7 @@
-{ ... }:
+{
+  lib,
+  ...
+}:
 
 {
   programs.zed-editor = {
@@ -9,7 +12,7 @@
           milliseconds = 1000;
         };
       };
-      buffer_font_family = "Victor Mono Nerd Font";
+      buffer_font_family = lib.mkForce "Victor Mono Nerd Font";
       features = {
         copilot = false;
       };
@@ -24,9 +27,6 @@
       };
       terminal = {
         font_family = "Victor Mono Nerd Font";
-      };
-      theme = {
-        mode = "dark";
       };
     };
 

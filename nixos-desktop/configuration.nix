@@ -52,6 +52,9 @@ in
 
   # Enable the GNOME Desktop Environment.
   services.displayManager.gdm.enable = true;
+  
+  # Enable bluetooth
+  hardware.bluetooth.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -87,6 +90,7 @@ in
     shell = pkgs.zsh;
     description = "Marc Miller";
     extraGroups = [
+      "bluetooth"
       "networkmanager"
       "wheel"
     ];

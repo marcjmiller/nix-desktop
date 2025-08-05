@@ -38,7 +38,7 @@ in
 
       # App shortcuts
       "${mod}, Return, exec, ${terminal}"
-      "${mod}, SPACE, exec, ${launcher}"
+      "${mod} SHIFT, Return, exec, ${launcher}"
     ];
 
     bindm = [
