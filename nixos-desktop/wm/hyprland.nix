@@ -18,6 +18,7 @@ in
     xwayland.enable = true;
     settings = {
       decoration = {
+        rounding = 6;
         blur = {
           enabled = true;
           new_optimizations = true;

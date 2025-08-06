@@ -47,8 +47,7 @@ in
       tree
       unzip
       usbutils
-      via
-      vial
+      vesktop
       xz
       zip
       zoom-us

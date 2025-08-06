@@ -16,5 +16,5 @@
       blackhole_1 = "blackhole_1.png";
       nordlaunch = "nordlaunch.png";
     }
-    .nordlaunch;
+    .blackhole_1;
 }
