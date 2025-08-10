@@ -37,6 +37,7 @@ in
       gnupg
       kitty
       libarchive
+      libsecret
       nerd-fonts.hasklug
       nerd-fonts.jetbrains-mono
       nerd-fonts.victor-mono
