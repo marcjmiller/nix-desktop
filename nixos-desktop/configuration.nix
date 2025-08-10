@@ -50,17 +50,12 @@ in
     # Enable GNOME (for the login manager, replace this later)
     displayManager.gdm.enable = true;
 
-    # Configure X11
-    xserver = {
-      enable = true;
-      xkb = {
-        layout = "us";
-        variant = "";
-      };
-    };
+    # Gnome Keyring for git credential helper
+    gnome.gnome-keyring.enable = true;
 
     # Disable short power button shutdown
     logind.powerKey = "ignore";
+    # Configure X11
 
     # Enable CUPS to print documents.
     printing.enable = true;
@@ -73,6 +68,14 @@ in
       alsa.support32Bit = true;
       pulse.enable = true;
       jack.enable = true;
+    };
+
+    xserver = {
+      enable = true;
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
     };
   };
 
@@ -102,6 +105,7 @@ in
       enable = true;
       withUWSM = true;
     };
+    seahorse.enable = true;
     zsh.enable = true;
   };
 
