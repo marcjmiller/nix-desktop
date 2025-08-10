@@ -49,6 +49,8 @@ in
       protonup-rs
       pciutils
       tealdeer
+      xfce.thunar
+      xfce.thunar-volman
       tree
       unzip
       usbutils
