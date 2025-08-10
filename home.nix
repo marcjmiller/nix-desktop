@@ -20,12 +20,15 @@ in
   home = {
     username = "marcm";
     homeDirectory = "/home/marcm";
-
+    
+    # Packages to install
     packages = with pkgs; [
       bat
+      blueman
       bluez
       bluez-tools
       btop
+      cliphist
       direnv
       dnsutils
       eza
@@ -40,7 +43,9 @@ in
       nil
       nixd
       oh-my-zsh
+      orca-slicer
       p7zip
+      pavucontrol
       protonup-rs
       pciutils
       tealdeer
@@ -48,12 +53,14 @@ in
       unzip
       usbutils
       vesktop
+      wl-clipboard-rs
       xz
       zip
       zoom-us
       zsh-powerlevel10k
     ];
 
+    # Files to import into system
     file = {
       "Pictures/Wallpapers" = {
         source = ./nixos-desktop/files/wallpapers;
@@ -61,19 +68,14 @@ in
       };
     };
 
+    # Originally installed version of NixOS
     stateVersion = "25.05";
   };
 
-  programs.lutris = {
-    enable = true;
-  };
-
-  programs.neovim = {
-    enable = true;
-  };
-
-  programs.yazi = {
-    enable = true;
+  programs = {
+    lutris.enable = true;
+    neovim.enable = true;
+    yazi.enable = true;
   };
 
   services = {
@@ -87,23 +89,29 @@ in
 
   stylix = {
     enable = true;
-    image = ./nixos-desktop/files/wallpapers/${wallpaperImg};
-    polarity = "dark";
-    targets = {
-      fuzzel.enable = true;
-      kitty.enable = true;
-      firefox.enable = true;
-    };
 
+    cursor.package = pkgs.adwaita-icon-theme;
+    cursor.name = "Adwaita";
+    cursor.size = 16;
+    image = ./nixos-desktop/files/wallpapers/${wallpaperImg};
     opacity = {
       desktop = 0.90;
       popups = 0.90;
       terminal = 0.90;
     };
+    polarity = "dark";
+    targets = {
+      fuzzel.enable = true;
+      kitty.enable = true;
+      firefox = {
+        enable = true;
+        profileNames = [ "default" ];
+      };
+    };
   };
 
   xresources.properties = {
     "Xcursor.size" = 16;
-    "Xft.dpi" = 172;
+    "Xft.dpi" = 157;
   };
 }

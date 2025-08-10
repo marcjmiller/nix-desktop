@@ -10,7 +10,18 @@ let
     ;
 in
 {
-  home.sessionVariables.NIXOS_OZONE_WL = "1";
+  home.sessionVariables = {
+    NIXPKGS_ALLOW_UNFREE = 1;
+    NIXOS_OZONE_WL = "1";
+  };
+
+  services.mako = {
+    enable = true;
+    settings = {
+      "default-timeout" = 5000;
+    };
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     package = null;
@@ -55,13 +66,20 @@ in
         "ignorealpha 0.5, launcher"
       ];
       windowrulev2 = [
-        # Comm apps to comm workspace
-        "workspace name:comm, class:(?i)^discord$"
-        "workspace name:dev, class:(?i)^dev\.zed\.zed$"
+        # Stick some apps to workspace, pin all workspaces to specific monitors
+        "workspace name:1, class:'' monitor: desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513"
+        "workspace name:2, class:'' monitor: desc:Dell Inc. DELL U2720Q D84V123"
+        "workspace name:3, class:(?i)^(steam|lutris)$ monitor: desc:Dell Inc. DELL U2720Q 685JV83"
+        "workspace name:comm, class:(?i)^(discord|vesktop)$ monitor: desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513"
+        "workspace name:dev, class:(?i)^dev\.zed\.zed$ monitor: desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513"
+        "workspace name:gm, class:'' monitor: desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513"
+        "workspace name:www, class:(?i)^(firefox|chrome|brave)$ monitor: desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513"
       ];
       exec-once = [
-        "blueman-applet"
-        "nm-applet --indicator"
+        "nm-applet"
+        "[workspace comm silent] vesktop"
+        "[workspace gm silent] lutris"
+        "[workspace gm silent] steam"
       ];
     };
     systemd = {

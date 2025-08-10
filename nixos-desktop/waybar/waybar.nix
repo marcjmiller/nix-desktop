@@ -24,6 +24,7 @@ in
         ];
         modules-right = [
           "tray"
+          "group/tray"
           "clock"
         ];
 
@@ -50,15 +51,55 @@ in
             "1" = [ ];
             "2" = [ ];
             "3" = [ ];
-            "4" = [ ];
-            "5" = [ ];
             "comm" = [ ];
             "dev" = [ ];
+            "gm" = [ ];
+            "www" = [ ];
           };
         };
 
         "tray" = {
           spacing = 12;
+          icons = {
+            Steam = "";
+          };
+        };
+
+        "group/tray" = {
+          drawer = {
+            transition-duration = 500;
+          };
+          orientation = "horizontal";
+          modules = [
+            "bluetooth"
+          ];
+        };
+
+        "bluetooth" = {
+          format = "󰂲";
+          format-on = "{icon}";
+          format-off = "{icon}";
+          format-connected = "{icon}";
+          format-icons = {
+            on = "󰂯";
+            off = "󰂲";
+            connected = "󰂱";
+          };
+          on-click = "blueman-manager";
+          tooltip-format-connected = "{device_enumerate}";
+        };
+
+        "network" = {
+          interface = "eno1";
+          format-wifi = "";
+          tooltip-format-wifi = "{essid} ({signalStrength}%)";
+          format-ethernet = "󰲝";
+          tooltip-format-ethernet = "󰲝 {ifname} {ipaddr}";
+          format-linked = "󱚵";
+          tooltip-format-linked = "󰲜 {ifname} (No IP)";
+          format-disconnected = "󰤫";
+          tooltip-format-disconnected = "Disconnected ⚠ {ifname}";
+          format-alt = "{ifname}: {ipaddr}/{cidr}";
         };
 
         "clock" = {
@@ -81,6 +122,5 @@ in
         };
       };
     };
-    # style = lib.mkAfter (builtins.readFile ./waybar.css);
   };
 }

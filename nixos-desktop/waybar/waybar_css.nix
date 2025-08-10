@@ -9,6 +9,7 @@ let
     base00
     base01
     base05
+    base06
     base08
     base0D
     ;
@@ -27,7 +28,6 @@ let
       min-height: 32px;
       min-width: 32px;
       border-radius: 16px;
-      font-size: 24px;
       margin: 4px;
       padding: 0 8px;
       background-color: #${base00};
@@ -40,28 +40,26 @@ let
       border-radius: 16px;
     }
 
-    #workspaces button {
+    #workspaces button, #network, #bluetooth, #tray {
       color: #${base00};
       background: #${base05};
       opacity: 0.5;
       margin: 3px;
+      padding: 0 12px;
       border-radius: 16px;
+      min-width: 36px;
+      font-weight: bold;
     }
 
-    #workspaces button.active {
+    #workspaces button.active, #workspaces button.focused {
       color: #${base00};
       background: linear-gradient(45deg, #${base08}, #${base0D});
       opacity: 1.0;
       font-weight: bold;
     }
     
-    #tray {
-      font-size: 24px;
-      margin: 8px 7px;
-      padding: 0 18px;
-      color: #${base00};
-      background: #${base08};
-      border-radius: 16px;
+    #network, #bluetooth {
+      opacity: 1.0
     }
   '';
 in

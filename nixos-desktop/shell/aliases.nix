@@ -6,8 +6,9 @@ let
 in
 {
   programs.zsh.shellAliases = {
-    clean = "nh clean all";
-    rb = "nh os switch ${flakeDir}";
+    rb = "NIXPKGS_ALLOW_UNFREE=1 nh os switch ${flakeDir} -- --impure";
+    rbc = "nh clean all --keep 10";
+    rbcd = "nh clean all --keep 10 --dry";
     vi = "nvim";
     vim = "nvim";
     upd = "nh os switch --update ${flakeDir}";

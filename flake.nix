@@ -34,7 +34,7 @@
             ./nixos-desktop/configuration.nix
             home-manager.nixosModules.home-manager
             {
-              home-manager.extraSpecialArgs = {inherit inputs;};
+              home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.useUserPackages = true;
               home-manager.users.marcm = {
                 nixpkgs.config.allowUnfree = true;
