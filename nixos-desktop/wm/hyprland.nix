@@ -4,6 +4,10 @@
   ...
 }:
 let
+  inherit (import ../variables.nix)
+    editor
+    terminal
+    ;
   inherit (stylixColors)
     base00
     base08
@@ -11,9 +15,11 @@ let
 in
 {
   home.sessionVariables = {
-    NIXPKGS_ALLOW_UNFREE = 1;
-    NIXPKGS_ALLOW_INSECURE = 1;
+    EDITOR = "${editor}";
     NIXOS_OZONE_WL = "1";
+    NIXPKGS_ALLOW_INSECURE = 1;
+    NIXPKGS_ALLOW_UNFREE = 1;
+    TERMINAL = "${terminal}";
   };
 
   services.mako = {
@@ -68,13 +74,10 @@ in
       ];
       windowrulev2 = [
         # Stick some apps to workspace, pin all workspaces to specific monitors
-        "workspace name:1, class:'' monitor: desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513"
-        "workspace name:2, class:'' monitor: desc:Dell Inc. DELL U2720Q D84V123"
-        "workspace name:3, class:(?i)^(steam|lutris)$ monitor: desc:Dell Inc. DELL U2720Q 685JV83"
-        "workspace name:comm, class:(?i)^(discord|vesktop)$ monitor: desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513"
-        "workspace name:dev, class:(?i)^dev\.zed\.zed$ monitor: desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513"
-        "workspace name:gm, class:'' monitor: desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513"
-        "workspace name:www, class:(?i)^(firefox|chrome|brave)$ monitor: desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513"
+        "workspace = 2, class:(?i)^(steam|lutris)$"
+        "workspace = comm, class:(?i)^(discord|vesktop)$"
+        "workspace = dev, class:(?i)^dev\.zed\.zed$"
+        "workspace = www, class:(?i)^(firefox|chrome|brave)$"
       ];
       exec-once = [
         "nm-applet"
@@ -89,9 +92,16 @@ in
       variables = [ "--all" ];
     };
     extraConfig = ''
-      monitor = desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513, preferred, 0x0, 1
+      monitor = desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513, 3840x2160@144, 0x0, 1
       monitor = desc:Dell Inc. DELL U2720Q 685JV83, preferred, 0x-2160, 1
       monitor = desc:Dell Inc. DELL U2720Q D84V123, preferred, 3840x-1680, 1, transform, 3
+      workspace = 1, monitor:"GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513"
+      workspace = 2, monitor: "Dell Inc. DELL U2720Q D84V123"
+      workspace = 3, monitor:"Dell Inc. DELL U2720Q 685JV83"
+      workspace = comm, monitor: "GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513"
+      workspace = dev, monitor: "GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513"
+      workspace = gm, monitor:"GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513"
+      workspace = www, monitor: "GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513"
     '';
   };
 }

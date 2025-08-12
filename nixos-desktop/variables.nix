@@ -6,15 +6,17 @@
   mod = "SUPER";
 
   # Some preferred apps
+  editor = "nvim";
   launcher = "fuzzel";
   terminal = "kitty";
 
   # Wallpaper selection
   wallpaperImg =
     {
-      pac-man = "pac-man.png";
+      astronaut = "astronaut.jpg";
       blackhole_1 = "blackhole_1.png";
       nordlaunch = "nordlaunch.png";
+      pac-man = "pac-man.png";
     }
-    .blackhole_1;
+    .astronaut;
 }

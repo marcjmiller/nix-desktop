@@ -17,6 +17,7 @@ in
         position = "top";
 
         modules-left = [
+          "custom/startmenu"
           "idle_inhibitor"
         ];
         modules-center = [
@@ -26,8 +27,15 @@ in
           "tray"
           "group/tray"
           "clock"
+          "custom/logout"
         ];
 
+        "custom/startmenu" = {
+          format = "";
+          on-click = "fuzzel";
+          tooltip = false;
+        };
+        
         "idle_inhibitor" = {
           format = "{icon}";
           format-icons = {
@@ -119,6 +127,12 @@ in
           actions = {
             on-click-right = "tz_up";
           };
+        };
+        
+        "custom/logout" = {
+          format = "";
+          on-click = "sleep 3 && hyprctl dispatch exit";
+          tooltip = false;
         };
       };
     };

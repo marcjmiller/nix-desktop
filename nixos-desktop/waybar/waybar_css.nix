@@ -24,7 +24,7 @@ let
       background: rgba(0,0,0,0);
     }
 
-    #idle_inhibitor, #clock {
+    #idle_inhibitor, #clock, #custom-startmenu, #custom-logout {
       min-height: 32px;
       min-width: 32px;
       border-radius: 16px;
@@ -57,7 +57,7 @@ let
       opacity: 1.0;
       font-weight: bold;
     }
-    
+
     #network, #bluetooth {
       opacity: 1.0
     }

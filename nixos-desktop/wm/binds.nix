@@ -34,12 +34,15 @@ in
       "${mod}, F, togglefloating"
       "${mod}, G, togglegroup"
       "${mod}, Q, killactive"
+      "${mod}, S, togglesplit"
       "${mod}, V, exec, cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"
-      "${mod}, W, exec, pkill -SIGUSR2 waybar"
 
       # App shortcuts
       "${mod}, Return, exec, ${terminal}"
       "${mod} SHIFT, Return, exec, ${launcher}"
+      
+      # Restart
+      "${mod} CONTROL, W, exec, pkill -SIGUSR2 waybar"
     ];
 
     bindm = [

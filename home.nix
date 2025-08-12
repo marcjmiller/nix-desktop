@@ -20,7 +20,7 @@ in
   home = {
     username = "marcm";
     homeDirectory = "/home/marcm";
-    
+
     # Packages to install
     packages = with pkgs; [
       bat
@@ -50,13 +50,14 @@ in
       protonup-rs
       pciutils
       tealdeer
-      xfce.thunar
-      xfce.thunar-volman
       tree
+      unrar
       unzip
       usbutils
       vesktop
       wl-clipboard-rs
+      xfce.thunar
+      xfce.thunar-volman
       xz
       zip
       zoom-us

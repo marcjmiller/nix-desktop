@@ -52,6 +52,8 @@ in
 
     # Gnome Keyring for git credential helper
     gnome.gnome-keyring.enable = true;
+    
+    gvfs.enable = true;
 
     # Disable short power button shutdown
     logind.powerKey = "ignore";
