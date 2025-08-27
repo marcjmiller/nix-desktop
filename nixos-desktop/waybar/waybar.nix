@@ -35,7 +35,7 @@ in
           on-click = "fuzzel";
           tooltip = false;
         };
-        
+
         "idle_inhibitor" = {
           format = "{icon}";
           format-icons = {
@@ -47,11 +47,18 @@ in
 
         "hyprland/workspaces" = {
           show-special = true;
-          format = "{name}";
+          all-outputs = false;
+          format = "{icon}";
           format-icons = {
-            default = " ";
-            active = " ";
-            urgent = " ";
+            # default = "";
+            # active = "";
+            # urgent = "";
+            "1" = "1";
+            "2" = "2";
+            "3" = "3";
+            "4" = "dev";
+            "5" = "www";
+            "6" = "com";
           };
           on-scroll-up = "hyprctl dispatch workspace e+1";
           on-scroll-down = "hyprctl dispatch workspace e-1";
@@ -59,10 +66,9 @@ in
             "1" = [ ];
             "2" = [ ];
             "3" = [ ];
-            "comm" = [ ];
-            "dev" = [ ];
-            "gm" = [ ];
-            "www" = [ ];
+            "4" = [ ];
+            "5" = [ ];
+            "6" = [ ];
           };
         };
 
@@ -80,6 +86,7 @@ in
           orientation = "horizontal";
           modules = [
             "bluetooth"
+            "custom/internet-status"
           ];
         };
 
@@ -95,6 +102,14 @@ in
           };
           on-click = "blueman-manager";
           tooltip-format-connected = "{device_enumerate}";
+        };
+
+        "custom/internet-status" = {
+          format = "";
+          interval = 20;
+          tooltip = true;
+          tooltip-format = "{}";
+          exec = "sh $HOME/.config/scripts/internet-status.sh";
         };
 
         "network" = {
@@ -128,7 +143,7 @@ in
             on-click-right = "tz_up";
           };
         };
-        
+
         "custom/logout" = {
           format = "";
           on-click = "sleep 3 && hyprctl dispatch exit";

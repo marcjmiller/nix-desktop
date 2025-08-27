@@ -6,10 +6,15 @@
   mod = "SUPER";
 
   # Some preferred apps
-  editor = "nvim";
-  launcher = "fuzzel";
-  terminal = "kitty";
-
+  apps = {
+    browser = "firefox";
+    editor = "nvim";
+    file-manager = "thunar";
+    gui-editor = "zeditor";
+    launcher = "fuzzel";
+    terminal = "kitty";
+  };
+  
   # Wallpaper selection
   wallpaperImg =
     {
@@ -19,4 +24,6 @@
       pac-man = "pac-man.png";
     }
     .astronaut;
+    
+    aiHome = "$HOME/workspace/ai";
 }

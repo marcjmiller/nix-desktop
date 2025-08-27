@@ -16,8 +16,8 @@ in
       extensions.packages = with firefox-addons; [
         bitwarden
         darkreader
-        enhancer-for-youtube
         frankerfacez
+        improved-tube
         tampermonkey
         ublock-origin
       ];

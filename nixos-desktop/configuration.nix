@@ -52,7 +52,7 @@ in
 
     # Gnome Keyring for git credential helper
     gnome.gnome-keyring.enable = true;
-    
+
     gvfs.enable = true;
 
     # Disable short power button shutdown
@@ -84,6 +84,19 @@ in
   # Enable bluetooth
   hardware.bluetooth.enable = true;
 
+  # Setup 35GB swapfile (32GB RAM + 3GB) for AI-Generation
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 35 * 1024;
+    }
+  ];
+
+  # Enable Docker
+  virtualisation.docker = {
+    enable = true;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marcm = {
     isNormalUser = true;
@@ -91,6 +104,7 @@ in
     description = "Marc Miller";
     extraGroups = [
       "bluetooth"
+      "docker"
       "networkmanager"
       "wheel"
     ];
@@ -120,10 +134,11 @@ in
   # ];
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 8188 ];
+    # allowedUDPPorts = [ ... ];
+  };
 
   # This value is the initial NixOS release installed
   system.stateVersion = "25.05";
@@ -146,7 +161,13 @@ in
       "nix-command"
       "flakes"
     ];
-    substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys = [ "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs=" ];
+    substituters = [
+      "https://hyprland.cachix.org"
+      "https://ai.cachix.org"
+    ];
+    trusted-public-keys = [
+      "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs="
+      "ai.cachix.org-1:N9dzRK+alWwoKXQlnn0H6aUx0lU/mspIoz8hMvGvbbc="
+    ];
   };
 }

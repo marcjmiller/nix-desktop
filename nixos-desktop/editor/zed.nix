@@ -7,6 +7,9 @@
   programs.zed-editor = {
     enable = true;
     userSettings = {
+      agent = {
+        always_allow_tool_actions = true;
+      };
       autosave = {
         after_delay = {
           milliseconds = 1000;
@@ -34,6 +37,8 @@
       "nix"
       "docker"
       "docker compose"
+      "dockerfile"
+      "make"
     ];
   };
 }

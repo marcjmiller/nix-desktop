@@ -40,7 +40,8 @@ let
       border-radius: 16px;
     }
 
-    #workspaces button, #network, #bluetooth, #tray {
+    #workspaces button, #network, #bluetooth, #tray,
+    #custom-internet-status {
       color: #${base00};
       background: #${base05};
       opacity: 0.5;
@@ -58,7 +59,7 @@ let
       font-weight: bold;
     }
 
-    #network, #bluetooth {
+    #network, #bluetooth, #custom-internet-status {
       opacity: 1.0
     }
   '';

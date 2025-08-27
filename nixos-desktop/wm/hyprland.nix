@@ -5,8 +5,7 @@
 }:
 let
   inherit (import ../variables.nix)
-    editor
-    terminal
+    apps
     ;
   inherit (stylixColors)
     base00
@@ -15,11 +14,11 @@ let
 in
 {
   home.sessionVariables = {
-    EDITOR = "${editor}";
+    EDITOR = "${apps.editor}";
     NIXOS_OZONE_WL = "1";
     NIXPKGS_ALLOW_INSECURE = 1;
     NIXPKGS_ALLOW_UNFREE = 1;
-    TERMINAL = "${terminal}";
+    TERMINAL = "${apps.terminal}";
   };
 
   services.mako = {
@@ -72,18 +71,19 @@ in
         "blur, group"
         "ignorealpha 0.5, launcher"
       ];
-      windowrulev2 = [
+      windowrule = [
         # Stick some apps to workspace, pin all workspaces to specific monitors
-        "workspace = 2, class:(?i)^(steam|lutris)$"
-        "workspace = comm, class:(?i)^(discord|vesktop)$"
-        "workspace = dev, class:(?i)^dev\.zed\.zed$"
-        "workspace = www, class:(?i)^(firefox|chrome|brave)$"
+        "workspace:2, class:^(steam|lutris)$"
+        "workspace:4, class:^(dev\.zed\.zed)$"
+        "workspace:5, class:^(firefox|chrome|brave)$"
+        "workspace:6, class:^(discord|vesktop)$"
+        "float, class:^(clipse)$"
+        "size 622 652, class:^(clipse)$"
       ];
       exec-once = [
         "nm-applet"
-        "[workspace comm silent] vesktop"
-        "[workspace gm silent] lutris"
-        "[workspace gm silent] steam"
+        "clipse --listen-shell"
+        "[workspace 6 silent] vesktop"
       ];
     };
     systemd = {
@@ -95,13 +95,13 @@ in
       monitor = desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513, 3840x2160@144, 0x0, 1
       monitor = desc:Dell Inc. DELL U2720Q 685JV83, preferred, 0x-2160, 1
       monitor = desc:Dell Inc. DELL U2720Q D84V123, preferred, 3840x-1680, 1, transform, 3
-      workspace = 1, monitor:"GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513"
-      workspace = 2, monitor: "Dell Inc. DELL U2720Q D84V123"
-      workspace = 3, monitor:"Dell Inc. DELL U2720Q 685JV83"
-      workspace = comm, monitor: "GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513"
-      workspace = dev, monitor: "GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513"
-      workspace = gm, monitor:"GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513"
-      workspace = www, monitor: "GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513"
+
+      workspace = 1, monitor:desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513
+      workspace = 2, monitor:desc:Dell Inc. DELL U2720Q 685JV83
+      workspace = 3, monitor:desc:Dell Inc. DELL U2720Q D84V123
+      workspace = 4, monitor:desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513
+      workspace = 5, monitor:desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513
+      workspace = 6, monitor:desc:Dell Inc. DELL U2720Q D84V123
     '';
   };
 }
