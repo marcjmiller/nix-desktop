@@ -136,7 +136,7 @@ in
   # Open ports in the firewall.
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 8188 ];
+    allowedTCPPorts = [ 8888 ];
     # allowedUDPPorts = [ ... ];
   };
 
