@@ -36,6 +36,7 @@ in
       direnv
       dnsutils
       eza
+      fastfetch
       file-roller
       fzf
       gamemode
@@ -59,6 +60,11 @@ in
       protontricks
       protonup-rs
       pciutils
+      rocmPackages.clr
+      rocmPackages.rocblas
+      rocmPackages.rocminfo
+      rocmPackages.rocm-smi
+      rocmPackages.rpp
       slurp
       swappy
       tealdeer
@@ -96,6 +102,7 @@ in
 
   programs = {
     lutris.enable = true;
+    mpv.enable = true;
     neovim.enable = true;
     yazi.enable = true;
   };

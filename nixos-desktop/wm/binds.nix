@@ -15,6 +15,10 @@ in
       "${mod}, 4, workspace, 4"
       "${mod}, 5, workspace, 5"
       "${mod}, 6, workspace, 6"
+      "${mod}, 7, workspace, 7"
+      "${mod}, 8, workspace, 8"
+      "${mod}, 9, workspace, 9"
+      "${mod}, 0, workspace, 10"
       "${mod}, mouse_down, workspace, e-1"
       "${mod}, mouse_up, workspace, e+1"
       "${mod}, TAB, workspace, previous"
@@ -47,7 +51,7 @@ in
       "${mod}, Print, exec, grim -g \"$(slurp)\" - | wl-copy"
       
       # Cut/Paste w/ history
-      "${mod}, V, exec, ${apps.terminal} --class clips -e \"clipse\""
+      "${mod}, V, exec, ${apps.terminal} --class clipse -e \"clipse\""
     ];
 
     bindm = [

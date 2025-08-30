@@ -57,7 +57,12 @@ in
 
     # Disable short power button shutdown
     logind.powerKey = "ignore";
-    # Configure X11
+
+    # # Enable Ollama
+    # ollama = {
+    #   enable = true;
+    #   acceleration = "rocm";
+    # };
 
     # Enable CUPS to print documents.
     printing.enable = true;
@@ -81,14 +86,19 @@ in
     };
   };
 
-  # Enable bluetooth
-  hardware.bluetooth.enable = true;
+  hardware = {
+    # Enable bluetooth
+    bluetooth.enable = true;
 
-  # Setup 35GB swapfile (32GB RAM + 3GB) for AI-Generation
+    # Enable OpenCL
+    amdgpu.opencl.enable = true;
+  };
+
+  # Setup 48GB swapfile for AI-Generation RAM offloading
   swapDevices = [
     {
       device = "/swapfile";
-      size = 35 * 1024;
+      size = 48 * 1024;
     }
   ];
 
@@ -106,6 +116,7 @@ in
       "bluetooth"
       "docker"
       "networkmanager"
+      "video"
       "wheel"
     ];
   };
