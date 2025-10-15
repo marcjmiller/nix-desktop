@@ -18,13 +18,41 @@ in
   # Bootloader.
   boot.loader = {
     efi.canTouchEfiVariables = true;
-    systemd-boot.enable = true;
+    systemd-boot = {
+      enable = true;
+
+      windows = {
+        "windows" =
+          let
+            # To determine the name of the windows boot drive, boot into edk2 first, then run
+            # `map -c` to get drive aliases, and try out running `FS1:`, then `ls EFI` to check
+            # which alias corresponds to which EFI partition.
+            boot-drive = "FS1";
+          in
+          {
+            title = "Windows";
+            efiDeviceHandle = boot-drive;
+            sortKey = "y_windows";
+          };
+      };
+
+      edk2-uefi-shell.enable = true;
+      edk2-uefi-shell.sortKey = "z_edk2";
+    };
   };
 
   # Networking
   networking = {
+    extraHosts = ''
+      0.0.0.0       modules-cdn.eac-prod.on.epicgames.com
+    '';
     hostName = "nix-desktop"; # Define your hostname.
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      plugins = [
+        pkgs.networkmanager-openvpn
+      ];
+    };
   };
 
   # Time zone.
@@ -58,11 +86,41 @@ in
     # Disable short power button shutdown
     logind.powerKey = "ignore";
 
-    # # Enable Ollama
-    # ollama = {
-    #   enable = true;
-    #   acceleration = "rocm";
-    # };
+    # Enable Ollama
+    ollama = {
+      package = pkgs.ollama-rocm;
+      enable = true;
+      acceleration = "rocm";
+      rocmOverrideGfx = "11.0.0";
+      environmentVariables = {
+        ROCR_VISIBLE_DEVICES = "0";
+      };
+    };
+
+    open-webui = {
+      enable = true;
+      host = "0.0.0.0";
+    };
+
+    pipewire = {
+      extraConfig.pipewire."10-disable-autogaincontrol" = ''
+        pulse.rules = [
+          {
+            matches = [
+              {
+                node.name = "~alsa_input.*"
+              }
+            ]
+            actions = {
+              update-props = {
+                # disable auto volume
+                pulse.ignore-sink-volume = true
+              }
+            }
+          }
+        ]
+      '';
+    };
 
     # Enable CUPS to print documents.
     printing.enable = true;
@@ -147,7 +205,10 @@ in
   # Open ports in the firewall.
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 8888 ];
+    allowedTCPPorts = [
+      8080
+      8888
+    ];
     # allowedUDPPorts = [ ... ];
   };
 

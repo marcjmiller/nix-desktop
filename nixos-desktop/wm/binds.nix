@@ -44,6 +44,9 @@ in
       "${mod} SHIFT, Return, exec, ${apps.launcher}"
       "${mod}, Z, exec, ${apps.gui-editor}"
       
+      # Plugins
+      "${mod}, B, exec, pypr expose"
+      
       # Restart waybar
       "${mod}, W, exec, pkill -SIGUSR2 waybar"
       
@@ -52,6 +55,11 @@ in
       
       # Cut/Paste w/ history
       "${mod}, V, exec, ${apps.terminal} --class clipse -e \"clipse\""
+      
+      # POE w/ awakened poe trade
+      # "SHIFT,Space,pass,^(awakened-poe-trade)$"
+      # "CTRL,D,pass,^(awakened-poe-trade)$"
+      # "CTRL ALT,D,pass,^(awakened-poe-trade)$"
     ];
 
     bindm = [

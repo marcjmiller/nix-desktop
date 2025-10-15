@@ -6,6 +6,9 @@
 let
   inherit (import ../variables.nix)
     apps
+    mainMonitor
+    rightMonitor
+    topMonitor
     ;
   inherit (stylixColors)
     base00
@@ -43,9 +46,11 @@ in
           xray = true;
         };
       };
+      
       general = {
         resize_on_border = true;
       };
+      
       group = {
         groupbar = lib.mkForce {
           font_family = "JetBrainsMono Nert Font Mono";
@@ -61,29 +66,44 @@ in
           "col.locked_inactive" = "rgba(${base00}55)";
         };
       };
+      
       input = {
         repeat_delay = 200;
         repeat_rate = 75;
       };
+      
       layerrule = [
         "blur, waybar"
         "blur, launcher"
         "blur, group"
         "ignorealpha 0.5, launcher"
       ];
-      windowrule = [
-        # Stick some apps to workspace, pin all workspaces to specific monitors
-        "workspace:2, class:(steam|lutris)"
-        "workspace:4, class:(dev\.zed\.zed)"
-        "workspace:5, class:(firefox|chrome|brave)"
-        "workspace:6, class:(discord|vesktop)"
+      
+      windowrulev2 = [
+        # Chat
+        "workspace 6, class:^(?i)discord$"
+        "workspace 6, class:^(?i)vesktop$"
+
+        # Dev
+        "workspace 4, class:^(?i)code$"
+        "workspace 4, class:^(?i)dev\.zed\.zed$"
+        
+        # Gaming
+        "workspace 2, class:^(?i)steam$"
+        "workspace 2, class:^(?i)lutris$"
+        
+        # Clipse
         "float,class:(clipse)"
         "size 800 500, class:(clipse)"
       ];
+
       exec-once = [
         "nm-applet"
-        "clipse -listen"
+        "clipse --listen-shell"
+        "pypr --debug /tmp/pypr.log"
         "[workspace 6 silent] vesktop"
+        "[workspace 2 silent] lutris"
+        "[workspace 2 silent] steam"
       ];
     };
     systemd = {
@@ -92,16 +112,18 @@ in
       variables = [ "--all" ];
     };
     extraConfig = ''
-      monitor=desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513, 3840x2160@144, 0x0, 1
-      monitor=desc:Dell Inc. DELL U2720Q 685JV83, preferred, 0x-2160, 1
-      monitor=desc:Dell Inc. DELL U2720Q D84V123, preferred, 3840x-1680, 1, transform, 3
+      monitor=${mainMonitor}, 3840x2160@144, 0x0, 1
+      monitor=${topMonitor}, preferred, 0x-2160, 1
+      monitor=${rightMonitor}, preferred, 3840x-1680, 1, transform, 3
 
-      workspace=1, monitor:desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513, persistent:true, default:true
-      workspace=2, monitor:desc:Dell Inc. DELL U2720Q 685JV83, persistent:true, default:true
-      workspace=3, monitor:desc:Dell Inc. DELL U2720Q D84V123, persistent:true, default:true
-      workspace=4, monitor:desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513, persistent:true
-      workspace=5, monitor:desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513, persistent:true
-      workspace=6, monitor:desc:Dell Inc. DELL U2720Q D84V123, persistent:true
+      workspace=1, monitor:${mainMonitor}, persistent:true, default:true
+      workspace=2, monitor:${topMonitor}, persistent:true, default:true
+      workspace=3, monitor:${rightMonitor}, persistent:true, default:true
+      workspace=4, monitor:${mainMonitor}, persistent:true
+      workspace=5, monitor:${mainMonitor}, persistent:true
+      workspace=6, monitor:${rightMonitor}, persistent:true
+      
+      workspace=special:exposed,gapsout:60,gapsin:30,bordersize:5,border:true,shadow:false
     '';
   };
 }

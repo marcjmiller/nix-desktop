@@ -4,6 +4,11 @@
 
   # Modifier key to use with Hyprland
   mod = "SUPER";
+  
+  # Monitors
+  mainMonitor = "desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513";
+  rightMonitor = "desc:Dell Inc. DELL U2720Q D84V123";
+  topMonitor = "desc:Dell Inc. DELL U2720Q 685JV83";
 
   # Some preferred apps
   apps = {

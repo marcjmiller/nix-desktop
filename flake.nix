@@ -15,12 +15,17 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    pyprland = {
+      url = "github:hyprland-community/pyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
       home-manager,
       nixpkgs,
+      pyprland,
       stylix,
       ...
     }@inputs:
@@ -38,6 +43,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.marcm = {
                 nixpkgs.config.allowUnfree = true;
+                nixpkgs.config.rocmSupport = true;
                 imports = [
                   stylix.homeModules.stylix
                   ./home.nix

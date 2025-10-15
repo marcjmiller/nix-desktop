@@ -1,4 +1,6 @@
 {
+  inputs,
+  lib,
   pkgs,
   ...
 }:
@@ -6,6 +8,28 @@ let
   inherit (import ./nixos-desktop/variables.nix)
     wallpaperImg
     ;
+
+  rocm = with pkgs.rocmPackages; [
+    rocm-core
+    rocminfo
+    rocm-runtime
+    rocm-device-libs
+    rocm-smi
+    rocblas
+    rocfft
+    rocrand
+    rocsparse
+    rocsolver
+    rccl
+    rocm-cmake
+    rocminfo
+    clr
+    hipblas
+    hipsparse
+    hipfft
+    hip-common
+    miopen
+  ];
 in
 {
   imports = [
@@ -17,72 +41,83 @@ in
     ./nixos-desktop/wm
   ];
 
-  nixpkgs.config.allowUnfree = true;
-    
+  nixpkgs.config = {
+    allowUnfree = true;
+    rocmSupport = true;
+  };
+
   home = {
     username = "marcm";
     homeDirectory = "/home/marcm";
 
     # Packages to install
-    packages = with pkgs; [
-      antimicrox
-      bat
-      blueman
-      bluez
-      bluez-tools
-      btop
-      cliphist
-      delta
-      direnv
-      dnsutils
-      eza
-      fastfetch
-      file-roller
-      fzf
-      gamemode
-      gawk
-      gnupg
-      grim
-      kitty
-      libarchive
-      libsecret
-      lmstudio
-      nerd-fonts.hasklug
-      nerd-fonts.jetbrains-mono
-      nerd-fonts.victor-mono
-      nil
-      nixd
-      nvtopPackages.amd
-      oh-my-zsh
-      orca-slicer
-      p7zip
-      pavucontrol
-      protontricks
-      protonup-rs
-      pciutils
-      rocmPackages.clr
-      rocmPackages.rocblas
-      rocmPackages.rocminfo
-      rocmPackages.rocm-smi
-      rocmPackages.rpp
-      slurp
-      swappy
-      tealdeer
-      tree
-      unrar
-      unzip
-      usbutils
-      vesktop
-      winetricks
-      wl-clipboard-rs
-      xfce.thunar
-      xfce.thunar-volman
-      xnviewmp
-      xz
-      zip
-      zoom-us
-      zsh-powerlevel10k
-    ];
+    packages =
+      rocm
+      ++ (with pkgs; [
+        antimicrox
+        appimage-run
+        bat
+        blueman
+        bluez
+        bluez-tools
+        btop
+        catppuccinifier-cli
+        cliphist
+        delta
+        direnv
+        dnsutils
+        eza
+        fastfetch
+        ffmpeg-full
+        file-roller
+        fzf
+        gamemode
+        gawk
+        glib
+        gnupg
+        grim
+        imagemagick
+        kitty
+        libarchive
+        libGL
+        libsecret
+        libv4l
+        lmstudio
+        nerd-fonts.hasklug
+        nerd-fonts.jetbrains-mono
+        nerd-fonts.victor-mono
+        networkmanager-openvpn
+        nil
+        nixd
+        nvtopPackages.amd
+        oh-my-zsh
+        p7zip
+        pavucontrol
+        pciutils
+        protontricks
+        protonup-rs
+        inputs.pyprland.packages.${pkgs.system}.default
+        slurp
+        stdenv.cc.cc.lib
+        swappy
+        tealdeer
+        tree
+        unrar
+        unzip
+        usbutils
+        vesktop
+        winetricks
+        wl-clipboard-rs
+        xfce.thunar
+        xfce.thunar-volman
+        xnviewmp
+        xz
+        zip
+        zlib
+        zoom-us
+        zsh-powerlevel10k
+        zstd
+      ]);
 
     # Files to import into system
     file = {
@@ -94,6 +129,23 @@ in
         source = ./nixos-desktop/files/scripts;
         recursive = true;
       };
+      ".config/hypr/pyprland.toml" = {
+        source = ./nixos-desktop/files/hyprland/pyprland.toml;
+      };
+    };
+
+    sessionVariables = {
+      HSA_OVERRIDE_GFX_VERSION = "11.0.0";
+      LD_LIBRARY_PATH = lib.makeLibraryPath (
+        rocm
+        ++ [
+          pkgs.glib
+          pkgs.libGL
+          pkgs.stdenv.cc.cc.lib
+          pkgs.zlib
+          pkgs.zstd
+        ]
+      );
     };
 
     # Originally installed version of NixOS
