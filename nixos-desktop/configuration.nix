@@ -108,13 +108,12 @@ in
           {
             matches = [
               {
-                node.name = "~alsa_input.*"
+                application.name = "~firefox"
               }
             ]
             actions = {
               update-props = {
-                # disable auto volume
-                pulse.ignore-sink-volume = true
+                pulse.ignore-application-volume = true
               }
             }
           }
