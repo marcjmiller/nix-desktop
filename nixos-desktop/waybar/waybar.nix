@@ -46,7 +46,7 @@ in
         };
 
         "hyprland/workspaces" = {
-          show-special = true;
+          show-special = false;
           all-outputs = false;
           format = "{icon}";
           format-icons = {

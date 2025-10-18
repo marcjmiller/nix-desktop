@@ -84,7 +84,7 @@ in
     gvfs.enable = true;
 
     # Disable short power button shutdown
-    logind.powerKey = "ignore";
+    logind.settings.Login.HandlePowerKey = "ignore";
 
     # Enable Ollama
     ollama = {
@@ -134,6 +134,14 @@ in
       pulse.enable = true;
       jack.enable = true;
     };
+    
+    udev.extraRules = ''
+      # Supporting VFIO
+      SUBSYSTEM=="vfio", OWNER="root", GROUP="kvm"
+      
+      # Enable Vial keyboard access
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0666", TAG+="uaccess", TAG+="udev-acl"
+    '';
 
     xserver = {
       enable = true;

@@ -29,7 +29,7 @@
         metrics = false;
       };
       terminal = {
-        font_family = "Victor Mono Nerd Font";
+        font_family = "Victor Mono Nerd Font"; 
       };
     };
 

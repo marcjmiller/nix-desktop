@@ -2,15 +2,18 @@
   # Location of the flake
   flakeDir = "$HOME/nixcfg";
 
-  # Modifier key to use with Hyprland
-  mod = "SUPER";
-  
-  # Monitors
-  mainMonitor = "desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513";
-  rightMonitor = "desc:Dell Inc. DELL U2720Q D84V123";
-  topMonitor = "desc:Dell Inc. DELL U2720Q 685JV83";
+  # Hyprland specific variables
+  hyprland = {
+    # Modifier key to use with Hyprland
+    mod = "SUPER";
 
-  # Some preferred apps
+    # Monitors
+    mainMonitor = "desc:GIGA-BYTE TECHNOLOGY CO. LTD. M28U 22100B010513";
+    rightMonitor = "desc:Dell Inc. DELL U2720Q D84V123";
+    topMonitor = "desc:Dell Inc. DELL U2720Q 685JV83";
+  };
+
+  # Preferred apps
   apps = {
     browser = "firefox";
     editor = "nvim";
@@ -19,7 +22,7 @@
     launcher = "fuzzel";
     terminal = "kitty";
   };
-  
+
   # Wallpaper selection
   wallpaperImg =
     {
@@ -29,6 +32,7 @@
       pac-man = "pac-man.png";
     }
     .astronaut;
-    
-    aiHome = "$HOME/workspace/ai";
+
+  # Misc variables
+  aiHome = "$HOME/workspace/ai";
 }

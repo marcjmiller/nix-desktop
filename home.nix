@@ -60,6 +60,7 @@ in
         blueman
         bluez
         bluez-tools
+        brightnessctl
         btop
         catppuccinifier-cli
         cliphist
@@ -106,6 +107,7 @@ in
         unzip
         usbutils
         vesktop
+        vial
         winetricks
         wl-clipboard-rs
         xfce.thunar
@@ -163,12 +165,46 @@ in
     blueman-applet = {
       enable = true;
     };
+
     clipse = {
       enable = true;
       allowDuplicates = false;
       historySize = 150;
       imageDisplay.type = "kitty";
     };
+
+    hypridle = {
+      enable = true;
+      settings = {
+        general = {
+          lock_cmd = "pidof hyprlock || hyprlock"; # avoid starting multiple hyprlock instances.
+          after_sleep_cmd = "hyprctl dispatch dpms on"; # to avoid having to press a key twice to turn on the display.
+          before_sleep_cmd = "loginctl lock-session"; # lock before suspend.
+        };
+
+        listener = [
+          {
+            timeout = 150; # 2.5min - dim the screen
+            on-timeout = "${pkgs.brightnessctl} -s set 10";
+            on-resume = "${pkgs.brightnessctl} -r";
+          }
+          {
+            timeout = 300; # 5 minutes - lock the screen
+            on-timeout = "loginctl lock-session";
+          }
+          {
+            timeout = 600; # 10 minutes - turn off displays
+            on-timeout = "hyprctl dispatch dpms off";
+            on-resume = "hyprctl dispatch dpms on && ${pkgs.brightnessctl} -r";
+          }
+          {
+            timeout = 1200; # 20 minutes - suspend system
+            on-timeout = "systemctl suspend";
+          }
+        ];
+      };
+    };
+
     network-manager-applet = {
       enable = true;
     };

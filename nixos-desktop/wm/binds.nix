@@ -2,69 +2,68 @@
 let
   inherit (import ../variables.nix)
     apps
-    mod
+    hyprland
     ;
 in
 {
   wayland.windowManager.hyprland.settings = {
     bind = [
       # Workspace navigation
-      "${mod}, 1, workspace, 1"
-      "${mod}, 2, workspace, 2"
-      "${mod}, 3, workspace, 3"
-      "${mod}, 4, workspace, 4"
-      "${mod}, 5, workspace, 5"
-      "${mod}, 6, workspace, 6"
-      "${mod}, 7, workspace, 7"
-      "${mod}, 8, workspace, 8"
-      "${mod}, 9, workspace, 9"
-      "${mod}, 0, workspace, 10"
-      "${mod}, mouse_down, workspace, e-1"
-      "${mod}, mouse_up, workspace, e+1"
-      "${mod}, TAB, workspace, previous"
+      "${hyprland.mod}, 1, workspace, 1"
+      "${hyprland.mod}, 2, workspace, 2"
+      "${hyprland.mod}, 3, workspace, 3"
+      "${hyprland.mod}, 4, workspace, 4"
+      "${hyprland.mod}, 5, workspace, 5"
+      "${hyprland.mod}, 6, workspace, 6"
+      "${hyprland.mod}, 7, workspace, 7"
+      "${hyprland.mod}, 8, workspace, 8"
+      "${hyprland.mod}, 9, workspace, 9"
+      "${hyprland.mod}, 0, workspace, 10"
+      "${hyprland.mod}, mouse_down, workspace, e-1"
+      "${hyprland.mod}, mouse_up, workspace, e+1"
+      "${hyprland.mod}, TAB, workspace, previous"
 
       # Window workspace movements
-      "${mod} SHIFT, 1, movetoworkspacesilent, 1"
-      "${mod} SHIFT, 2, movetoworkspacesilent, 2"
-      "${mod} SHIFT, 3, movetoworkspacesilent, 3"
-      "${mod} SHIFT, 4, movetoworkspacesilent, 4"
-      "${mod} SHIFT, 5, movetoworkspacesilent, 5"
-      "${mod} SHIFT, 6, movetoworkspacesilent, 6"
+      "${hyprland.mod} SHIFT, 1, movetoworkspacesilent, 1"
+      "${hyprland.mod} SHIFT, 2, movetoworkspacesilent, 2"
+      "${hyprland.mod} SHIFT, 3, movetoworkspacesilent, 3"
+      "${hyprland.mod} SHIFT, 4, movetoworkspacesilent, 4"
+      "${hyprland.mod} SHIFT, 5, movetoworkspacesilent, 5"
+      "${hyprland.mod} SHIFT, 6, movetoworkspacesilent, 6"
 
       # Window behavior
-      "${mod}, F, togglefloating"
-      "${mod}, G, togglegroup"
-      "${mod}, Q, killactive"
-      "${mod}, S, togglesplit"
+      "${hyprland.mod}, F, togglefloating"
+      "${hyprland.mod}, G, togglegroup"
+      "${hyprland.mod}, Q, killactive"
+      "${hyprland.mod}, S, togglesplit"
+      "${hyprland.mod}, U, moveoutofgroup"
 
       # App shortcuts
-      "${mod}, Return, exec, ${apps.terminal}"
-      "${mod} SHIFT, B, exec, ${apps.browser}"
-      "${mod} SHIFT, F, exec, ${apps.file-manager}"
-      "${mod} SHIFT, Return, exec, ${apps.launcher}"
-      "${mod}, Z, exec, ${apps.gui-editor}"
-      
-      # Plugins
-      "${mod}, B, exec, pypr expose"
+      "${hyprland.mod}, Return, exec, ${apps.terminal}"
+      "${hyprland.mod} SHIFT, B, exec, ${apps.browser}"
+      "${hyprland.mod} SHIFT, F, exec, ${apps.file-manager}"
+      "${hyprland.mod} SHIFT, Return, exec, ${apps.launcher}"
+      "${hyprland.mod} SHIFT, Z, exec, ${apps.gui-editor}"
       
       # Restart waybar
-      "${mod}, W, exec, pkill -SIGUSR2 waybar"
+      "${hyprland.mod} SHIFT, W, exec, pkill -SIGUSR2 waybar"
       
       # Screenshots
-      "${mod}, Print, exec, grim -g \"$(slurp)\" - | wl-copy"
+      "${hyprland.mod}, Print, exec, grim -g \"$(slurp)\" - | wl-copy"
       
       # Cut/Paste w/ history
-      "${mod}, V, exec, ${apps.terminal} --class clipse -e \"clipse\""
+      "${hyprland.mod} SHIFT, V, exec, ${apps.terminal} --class clipse -e \"clipse\""
       
-      # POE w/ awakened poe trade
-      # "SHIFT,Space,pass,^(awakened-poe-trade)$"
-      # "CTRL,D,pass,^(awakened-poe-trade)$"
-      # "CTRL ALT,D,pass,^(awakened-poe-trade)$"
+      # Pypr commands
+      "${hyprland.mod}, B, exec, pypr expose" # Expose view
+      "${hyprland.mod}  , V, exec, pypr toggle volume" # Toggle terminal
+      "${hyprland.mod} SHIFT, W, exec, pypr fetch_client_menu" # Find lost windows
+      "${hyprland.mod}, escape, exec, pypr toggle term" # Toggle terminal
     ];
 
     bindm = [
-      "${mod}, mouse:272, movewindow"
-      "${mod}, mouse:273, resizewindow"
+      "${hyprland.mod}, mouse:272, movewindow"
+      "${hyprland.mod}, mouse:273, resizewindow"
     ];
   };
 }
