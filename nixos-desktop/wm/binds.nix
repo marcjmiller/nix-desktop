@@ -56,8 +56,8 @@ in
       
       # Pypr commands
       "${hyprland.mod}, B, exec, pypr expose" # Expose view
-      "${hyprland.mod}  , V, exec, pypr toggle volume" # Toggle terminal
-      "${hyprland.mod} SHIFT, W, exec, pypr fetch_client_menu" # Find lost windows
+      "${hyprland.mod}, V, exec, pypr toggle volume" # Toggle terminal
+      "${hyprland.mod}, W, exec, pypr fetch_client_menu" # Find lost windows
       "${hyprland.mod}, escape, exec, pypr toggle term" # Toggle terminal
     ];
 
