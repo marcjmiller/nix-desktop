@@ -2,7 +2,9 @@
   description = "A flake for my desktop config";
 
   inputs = {
+    kickstart-nixvim.url = "github:JMartJonesy/kickstart.nixvim";
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

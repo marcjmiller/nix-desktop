@@ -39,6 +39,8 @@ in
     ./nixos-desktop/tools
     ./nixos-desktop/waybar
     ./nixos-desktop/wm
+    
+    inputs.kickstart-nixvim.homeManagerModules.default
   ];
 
   nixpkgs.config = {
@@ -84,6 +86,7 @@ in
         libsecret
         libv4l
         lmstudio
+        mangohud
         nerd-fonts.hasklug
         nerd-fonts.jetbrains-mono
         nerd-fonts.victor-mono
@@ -98,6 +101,7 @@ in
         protontricks
         protonup-rs
         inputs.pyprland.packages.${pkgs.system}.default
+        ripgrep
         slurp
         stdenv.cc.cc.lib
         swappy
@@ -157,7 +161,8 @@ in
   programs = {
     lutris.enable = true;
     mpv.enable = true;
-    neovim.enable = true;
+    # neovim.enable = true;
+    nixvim.enable = true;
     yazi.enable = true;
   };
 
