@@ -7,9 +7,7 @@
   programs.git = {
     enable = true;
     package = pkgs.gitFull;
-    userName = "Marc Miller";
-    userEmail = "marcjmiller@outlook.com";
-    extraConfig = {
+    settings = {
       branch.sort = "-committerdate";
       commit.verbose = true;
       core.askPass = "";
@@ -31,6 +29,10 @@
       rerere.autoupdate = true;
       rerere.enabled = true;
       tag.sort = "version:refname";
+      user = {
+        email = "marcjmiller@outlook.com";
+        name = "Marc Miller";
+      };
     };
   };
 }

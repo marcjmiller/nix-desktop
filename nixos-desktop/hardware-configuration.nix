@@ -38,6 +38,12 @@
       "dmask=0077"
     ];
   };
+  
+  fileSystems."/mnt/gaming" = {
+    device = "/dev/disk/by-uuid/abdb6ca8-309d-44bc-85bd-214d7aadaa2b";
+    fsType = "ext4";
+    options = [ "nofail" ];
+  };
 
   swapDevices = [
     { device = "/dev/disk/by-uuid/bde5ce51-7378-4bb8-8368-21f6cbde96fb"; }

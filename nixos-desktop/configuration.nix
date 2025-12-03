@@ -43,9 +43,10 @@ in
 
   # Networking
   networking = {
-    extraHosts = ''
-      0.0.0.0       modules-cdn.eac-prod.on.epicgames.com
-    '';
+    # Disable EAC
+    # extraHosts = ''
+    #   0.0.0.0       modules-cdn.eac-prod.on.epicgames.com
+    # '';
     hostName = "nix-desktop"; # Define your hostname.
     networkmanager = {
       enable = true;

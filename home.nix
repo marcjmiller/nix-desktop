@@ -23,7 +23,6 @@ let
     rccl
     rocm-cmake
     rocminfo
-    clr
     hipblas
     hipsparse
     hipfft
@@ -66,18 +65,25 @@ in
         btop
         catppuccinifier-cli
         cliphist
+        corefonts
         delta
         direnv
         dnsutils
+        dotnet-aspnetcore_9
         eza
         fastfetch
+        fd
         ffmpeg-full
         file-roller
+        freetype
         fzf
-        gamemode
         gawk
+        gcc
+        gimp3
         glib
         gnupg
+        go
+        gopls
         grim
         imagemagick
         kitty
@@ -93,8 +99,10 @@ in
         networkmanager-openvpn
         nil
         nixd
+        nodejs_24
         nvtopPackages.amd
         oh-my-zsh
+        openssl
         p7zip
         pavucontrol
         pciutils
@@ -104,9 +112,11 @@ in
         ripgrep
         slurp
         stdenv.cc.cc.lib
+        steamtinkerlaunch
         swappy
         tealdeer
         tree
+        tree-sitter
         unrar
         unzip
         usbutils
@@ -118,6 +128,7 @@ in
         xfce.thunar-volman
         xnviewmp
         xz
+        zenity
         zip
         zlib
         zoom-us
@@ -161,7 +172,6 @@ in
   programs = {
     lutris.enable = true;
     mpv.enable = true;
-    # neovim.enable = true;
     nixvim.enable = true;
     yazi.enable = true;
   };
